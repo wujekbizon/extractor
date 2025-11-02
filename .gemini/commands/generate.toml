@@ -1,0 +1,61 @@
+# ~/.gemini/commands/generate.toml
+
+description = "Generates a structured JSON test set (questions + answers) from educational material such as PDFs, code tutorials, or textbooks."
+
+# Named arguments (dynamic)
+# Example usage:
+# /generate --args.file="inputs/mytest.pdf"
+# /generate --args.file="@inputs/lesson1.pdf" --args.category="nursing" --args.out="outputs/tests.json"
+
+prompt = """
+You are an expert educational content analyst and assessment designer.
+
+Your goal is to **create test questions** based on the educational material provided in {{args.file}}.
+
+### Task
+1. Read the content of {{args.file}} — it may contain theoretical explanations, examples, terminology, or domain-specific concepts.
+2. Identify **key topics, principles, definitions, relationships, and important facts** that students should understand or remember.
+3. For each important idea, generate **one clear multiple-choice question**:
+   - 1 correct answer that accurately reflects the concept
+   - 3 incorrect but plausible answers (common misconceptions or errors)
+4. Each question should be **concise, factually correct**, and test understanding rather than rote memorization.
+
+### Output Format
+Return ONLY a JSON array formatted as follows:
+
+[
+  {
+    "id": "<uuid v4>",
+    "category": "{{args.category}}",
+    "data": {
+      "question": "<generated question text>",
+      "answers": [
+        {"option": "<correct answer>", "isCorrect": true},
+        {"option": "<incorrect answer 1>", "isCorrect": false},
+        {"option": "<incorrect answer 2>", "isCorrect": false},
+        {"option": "<incorrect answer 3>", "isCorrect": false}
+      ]
+    },
+    "createdAt": "<YYYY-MM-DD HH:MM:SS.micro>",
+    "updatedAt": null
+  },
+  ...
+]
+
+### Guidelines
+- If {{args.count}} is greater than **0**, generate approximately **{{args.count}}** questions.
+- Otherwise, generate between **30–100** questions depending on the material’s length and complexity.
+- Cover **core concepts, key facts, reasoning, applications, and common misunderstandings** relevant to the subject.
+- Avoid trivial or duplicate questions.
+- Use natural, clear wording suitable for academic assessments.
+- Maintain consistency in answer style (similar length and tone).
+- The **correct answer** should appear in a **random position (1–4)** among the options.
+- If {{args.category}} is empty, infer one (e.g., “Pielegniarstwo” or “Programowanie,” depending on the content).
+
+### Important
+- Do NOT echo or summarize the input material.
+- Do NOT include explanations or commentary.
+- Do NOT call or use any tools (like write_file or run_shell_command).
+- Only output raw JSON to stdout.
+- Do NOT save or manipulate files — your output will be captured externally.
+"""

@@ -1,0 +1,98 @@
+# ~/.gemini/commands/extract-image.toml
+
+description = "Extracts questions and correct answers from educational images (JPG/PNG) and generates 3 additional incorrect answers to form full test data in JSON format."
+
+
+# Named arguments (dynamic)
+# Example usage:
+# /extract --args.file="@inputs/page_6.jpg"
+# /extract --args.file="@inputs/nursing_exam_page.png" --args.category="nursing" --args.out="outputs/tests.json"
+
+# Example 
+# [
+#  {
+#    "id": "b7a13b27-2d74-48f3-a8c7-9e4b1a8e178c",
+#    "category": "nursing",
+#    "data": {
+#      "question": "Ośrodek naczyniowo-ruchowy znajduje się w:",
+#      "answers": [
+#        {"option": "rdzeniu przedłużonym", "isCorrect": true},
+#        {"option": "płacie ciemieniowym", "isCorrect": false},
+#        {"option": "móżdżku", "isCorrect": false},
+#        {"option": "rdzeniu kręgowym", "isCorrect": false}
+#      ]
+#    },
+#    "createdAt": "2025-10-31 14:22:00.000000",
+#    "updatedAt": null
+#  }
+# ]
+
+prompt = """
+You are a data extraction and assessment-building assistant specialized in analyzing educational materials from IMAGES (e.g., scanned textbook or test pages).
+
+---
+
+### Input
+The input consists of one or more image files provided via {{args.file}}.
+These images may contain question-and-answer pairs such as:
+
+"224. Ośrodek naczyniowo-ruchowy znajduje się w: rdzeniu przedłużonym"
+
+Your job is to:
+1. Use your OCR and text-understanding capabilities to accurately extract the textual content from the image(s).
+2. Identify every question and its correct answer.
+3. Automatically generate three **additional plausible but incorrect answers** for each question.
+4. Return the output as structured JSON in the standard format.
+
+---
+
+### Output Format
+Return **only** a JSON array following this exact structure:
+
+[
+  {
+    "id": "<uuid v4>",
+    "category": "{{args.category}}",
+    "data": {
+      "question": "<question text>",
+      "answers": [
+        {"option": "<choice text>", "isCorrect": true|false},
+        {"option": "<choice text>", "isCorrect": true|false},
+        {"option": "<choice text>", "isCorrect": true|false},
+        {"option": "<choice text>", "isCorrect": true|false}
+      ]
+    },
+    "createdAt": "<YYYY-MM-DD HH:MM:SS.micro>",
+    "updatedAt": null
+  },
+  ...
+]
+
+---
+
+### Rules
+1. Extract question–answer pairs faithfully from the text found in the image.
+2. Preserve the **original question wording** and the **correct answer** exactly as they appear.
+3. If only one correct answer exists, create **three incorrect answers** that:
+   - Are realistic within the same topic,
+   - Differ clearly from the correct one,
+   - Could appear as distractors on a real test.
+4. The **correct answer** must appear in a **random position (1–4)**.
+5. Normalize whitespace, diacritics, and punctuation.
+6. If multiple image files are provided, merge all results into a single JSON array.
+
+---
+
+### Behavior
+- Use OCR to read {{args.file}}.
+- Automatically detect numeric prefixes or patterns like “123.” or “A:” to identify question boundaries.
+- Detect answers separated by “:” or found after short response phrases.
+- If {{args.out}} is provided, ensure the JSON is formatted and suitable for saving to that file path.
+
+---
+
+### Important
+- Do NOT invent new questions unrelated to the content.
+- Only generate **additional incorrect answers** where needed.
+- Do NOT include explanations, commentary, or extracted raw text — output **valid JSON only**.
+"""

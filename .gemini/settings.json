@@ -1,0 +1,14 @@
+{
+  "general": {
+    "checkpointing": {
+      "enabled": true
+    },
+    "preferredEditor": "cursor"
+  },
+  "ui": {
+    "theme": "Atom One"
+  },
+  "tools": {
+    "useRipgrep": true
+  }
+}

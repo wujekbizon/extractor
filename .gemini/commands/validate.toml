@@ -1,0 +1,71 @@
+# ~/.gemini/commands/validate.toml
+
+description = "Validates that generated test questions match the source material and that the correct answer is contextually accurate."
+
+# Named arguments (dynamic)
+# Example usage:
+# /validate --args.file="outputs/tests.json" --args.source="inputs/file2.pdf"
+# /validate --args.file="outputs/tests.json" --args.source="@inputs/file2.pdf" --args.out="outputs/tests_validated.json"
+
+prompt = """
+You are an expert educational content verifier and fact-checker.
+
+Your task is to **validate** that each question in {{args.file}} is accurate and grounded in the original source material {{args.source}}.
+
+---
+
+### Task
+1. Read both:
+   - The generated test questions and answers from {{args.file}}
+   - The original educational content from {{args.source}}
+2. For each question in the test file:
+   - Determine if the **topic, idea, or key fact** is actually present in the source material.
+     - The wording does not need to be identical, but the concept must clearly exist.
+   - Verify that the **correct answer** (the one with `"isCorrect": true`) is accurate according to the source.
+   - If the question is not supported by the source, or the correct answer cannot be verified, **exclude it** from the validated output.
+3. Keep only questions that are clearly supported and correct.
+
+---
+
+### Output Format
+Return ONLY a JSON array of the validated questions, in the same schema:
+
+[
+  {
+    "id": "<uuid v4 or same as input>",
+    "category": "<category>",
+    "data": {
+      "question": "<validated question>",
+      "answers": [
+        {"option": "<correct answer>", "isCorrect": true},
+        {"option": "<incorrect answer 1>", "isCorrect": false},
+        {"option": "<incorrect answer 2>", "isCorrect": false},
+        {"option": "<incorrect answer 3>", "isCorrect": false}
+      ]
+    },
+    "createdAt": "<timestamp>",
+    "updatedAt": "<timestamp or null>"
+  },
+  ...
+]
+
+The result must be **saved or suitable for saving** as:
+`<original filename>_validated.json`
+If {{args.out}} is provided, prepare the JSON for that file path instead.
+
+---
+
+### Validation Rules
+- Only include questions that are **semantically consistent** with {{args.source}}.
+- Allow flexible matching: synonyms, paraphrasing, or code equivalence are valid if the meaning matches.
+- Discard hallucinated or irrelevant questions (not present in the source).
+- Keep at least one correct answer marked `"isCorrect": true`.
+- Preserve the question IDs and metadata.
+
+---
+
+### Important
+- Do NOT regenerate or invent new questions.
+- Do NOT modify question text except to fix obvious typos.
+- Do NOT output explanations — return **only valid JSON**.
+"""

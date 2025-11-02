@@ -1,0 +1,452 @@
+[
+  {
+    "id": "f1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+    "category": "fizjologia",
+    "data": {
+      "question": "Która z wymienionych funkcji skóry NIE jest jej podstawową rolą w organizmie?",
+      "answers": [
+        {"option": "Synteza witaminy K", "isCorrect": true},
+        {"option": "Funkcja ochronna i termoregulacyjna", "isCorrect": false},
+        {"option": "Udział w regulacji gospodarki wodno-elektrolitowej", "isCorrect": false},
+        {"option": "Synteza melaniny i witaminy D", "isCorrect": false}
+      ]
+    },
+    "createdAt": "2025-11-01 14:30:01.123456",
+    "updatedAt": null
+  },
+  {
+    "id": "a1b2c3d4-e5f6-4a7b-8c9d-1e2f3a4b5c6d",
+    "category": "fizjologia",
+    "data": {
+      "question": "Skóra (cutis) zbudowana jest z dwóch głównych warstw. Jak nazywa się warstwa zewnętrzna?",
+      "answers": [
+        {"option": "Naskórek (epidermis)", "isCorrect": true},
+        {"option": "Skóra właściwa (corium)", "isCorrect": false},
+        {"option": "Tkanka podskórna", "isCorrect": false},
+        {"option": "Warstwa rogowa", "isCorrect": false}
+      ]
+    },
+    "createdAt": "2025-11-01 14:30:02.234567",
+    "updatedAt": null
+  },
+  {
+    "id": "b1c2d3e4-f5a6-4b7c-8d9e-2f3a4b5c6d7e",
+    "category": "fizjologia",
+    "data": {
+      "question": "Jaką metodę stosuje się do oceny obrzęku, np. w okolicy grzbietowej stopy?",
+      "answers": [
+        {"option": "Uciskanie kciukiem i obserwacja, czy pozostaje dołek", "isCorrect": true},
+        {"option": "Oglądanie zmiany zabarwienia skóry", "isCorrect": false},
+        {"option": "Pomiar temperatury skóry grzbietem ręki", "isCorrect": false},
+        {"option": "Ocena sprężystości przez uszczypnięcie fałdu skórnego", "isCorrect": false}
+      ]
+    },
+    "createdAt": "2025-11-01 14:30:03.345678",
+    "updatedAt": null
+  },
+  {
+    "id": "c1d2e3f4-a5b6-4c7d-8e9f-3a4b5c6d7e8f",
+    "category": "fizjologia",
+    "data": {
+      "question": "Sinica centralna, w odróżnieniu od obwodowej, charakteryzuje się sinym zabarwieniem której części ciała?",
+      "answers": [
+        {"option": "Języka", "isCorrect": true},
+        {"option": "Warg", "isCorrect": false},
+        {"option": "Palców rąk", "isCorrect": false},
+        {"option": "Płatków uszu", "isCorrect": false}
+      ]
+    },
+    "createdAt": "2025-11-01 14:30:04.456789",
+    "updatedAt": null
+  },
+  {
+    "id": "d1e2f3a4-b5c6-4d7e-8f9a-4b5c6d7e8f9a",
+    "category": "fizjologia",
+    "data": {
+      "question": "Co jest główną przyczyną żółtego zabarwienia skóry (żółtaczki)?",
+      "answers": [
+        {"option": "Zwiększona ilość bilirubiny", "isCorrect": true},
+        {"option": "Zwiększona ilość melaniny", "isCorrect": false},
+        {"option": "Spadek stężenia hemoglobiny", "isCorrect": false},
+        {"option": "Nadmierne spożycie karotenu", "isCorrect": false}
+      ]
+    },
+    "createdAt": "2025-11-01 14:30:05.567890",
+    "updatedAt": null
+  },
+  {
+    "id": "e1f2a3b4-c5d6-4e7f-8a9b-5c6d7e8f9a0b",
+    "category": "fizjologia",
+    "data": {
+      "question": "Która ze zmian skórnych jest płaska, ograniczona i niewyczuwalna palpacyjnie?",
+      "answers": [
+        {"option": "Plama", "isCorrect": true},
+        {"option": "Grudka", "isCorrect": false},
+        {"option": "Pęcherzyk", "isCorrect": false},
+        {"option": "Guzek", "isCorrect": false}
+      ]
+    },
+    "createdAt": "2025-11-01 14:30:06.678901",
+    "updatedAt": null
+  },
+  {
+    "id": "f2a3b4c5-d6e7-4f8a-9b0c-6d7e8f9a0b1c",
+    "category": "fizjologia",
+    "data": {
+      "question": "Nadmierny porost włosów u kobiet o charakterze owłosienia męskiego to:",
+      "answers": [
+        {"option": "Hirsutyzm", "isCorrect": true},
+        {"option": "Hipertrichoza", "isCorrect": false},
+        {"option": "Łysienie plackowate", "isCorrect": false},
+        {"option": "Lanugo", "isCorrect": false}
+      ]
+    },
+    "createdAt": "2025-11-01 14:30:07.789012",
+    "updatedAt": null
+  },
+  {
+    "id": "a3b4c5d6-e7f8-4a9b-8c0d-7e8f9a0b1c2d",
+    "category": "fizjologia",
+    "data": {
+      "question": "Prawidłowy kąt między płaszczyzną płytki paznokciowej a płaszczyzną palca wynosi:",
+      "answers": [
+        {"option": "Mniej niż 180°", "isCorrect": true},
+        {"option": "Dokładnie 180°", "isCorrect": false},
+        {"option": "Więcej niż 180°", "isCorrect": false},
+        {"option": "Zawsze 90°", "isCorrect": false}
+      ]
+    },
+    "createdAt": "2025-11-01 14:30:08.890123",
+    "updatedAt": null
+  },
+  {
+    "id": "b4c5d6e7-f8a9-4b0c-9d1e-8f9a0b1c2d3e",
+    "category": "fizjologia",
+    "data": {
+      "question": "Pałeczkowate paznokcie (clubbing) są charakterystycznym objawem związanym głównie z:",
+      "answers": [
+        {"option": "Przewlekłą hipoksją i chorobami płuc", "isCorrect": true},
+        {"option": "Niedokrwistością z niedoboru żelaza", "isCorrect": false},
+        {"option": "Zaburzeniami hormonalnymi", "isCorrect": false},
+        {"option": "Infekcjami grzybiczymi", "isCorrect": false}
+      ]
+    },
+    "createdAt": "2025-11-01 14:30:09.901234",
+    "updatedAt": null
+  },
+  {
+    "id": "c5d6e7f8-a9b0-4c1d-9e2f-9a0b1c2d3e4f",
+    "category": "fizjologia",
+    "data": {
+      "question": "Główną funkcją węzłów chłonnych jest:",
+      "answers": [
+        {"option": "Funkcja odpornościowa i filtracja chłonki", "isCorrect": true},
+        {"option": "Produkcja czerwonych krwinek", "isCorrect": false},
+        {"option": "Regulacja ciśnienia krwi", "isCorrect": false},
+        {"option": "Transport tlenu do tkanek", "isCorrect": false}
+      ]
+    },
+    "createdAt": "2025-11-01 14:30:11.012345",
+    "updatedAt": null
+  },
+  {
+    "id": "d6e7f8a9-b0c1-4d2e-9f3a-0b1c2d3e4f5a",
+    "category": "fizjologia",
+    "data": {
+      "question": "Powiększenie węzła chłonnego nadobojczykowego lewego (węzeł Virchowa) jest często związane z nowotworami:",
+      "answers": [
+        {"option": "Przewodu pokarmowego (np. żołądka)", "isCorrect": true},
+        {"option": "Głowy i szyi", "isCorrect": false},
+        {"option": "Płuc", "isCorrect": false},
+        {"option": "Skóry kończyn dolnych", "isCorrect": false}
+      ]
+    },
+    "createdAt": "2025-11-01 14:30:12.123456",
+    "updatedAt": null
+  },
+  {
+    "id": "e7f8a9b0-c1d2-4e3f-a04b-1c2d3e4f5a6b",
+    "category": "fizjologia",
+    "data": {
+      "question": "Prawidłowe węzły chłonne w badaniu palpacyjnym są:",
+      "answers": [
+        {"option": "Niewyczuwalne lub małe, niebolesne i przesuwalne", "isCorrect": true},
+        {"option": "Duże, twarde i bolesne", "isCorrect": false},
+        {"option": "Miękkie, bolesne i zaczerwienione", "isCorrect": false},
+        {"option": "Twarde, nieprzesuwalne względem podłoża", "isCorrect": false}
+      ]
+    },
+    "createdAt": "2025-11-01 14:30:13.234567",
+    "updatedAt": null
+  },
+  {
+    "id": "f8a9b0c1-d2e3-4f4a-b15c-2d3e4f5a6b7c",
+    "category": "fizjologia",
+    "data": {
+      "question": "Tzw. 'księżyc w pełni' i zaczerwienione policzki to wygląd twarzy charakterystyczny dla:",
+      "answers": [
+        {"option": "Zespołu Cushinga", "isCorrect": true},
+        {"option": "Choroby Parkinsona", "isCorrect": false},
+        {"option": "Niedoczynności tarczycy", "isCorrect": false},
+        {"option": "Akromegalii", "isCorrect": false}
+      ]
+    },
+    "createdAt": "2025-11-01 14:30:14.345678",
+    "updatedAt": null
+  },
+  {
+    "id": "a9b0c1d2-e3f4-4a5b-c26d-3e4f5a6b7c8d",
+    "category": "fizjologia",
+    "data": {
+      "question": "Reakcja konsensualna (skrzyżowana) źrenic na światło polega na:",
+      "answers": [
+        {"option": "Zwężeniu źrenicy w oku nieoświetlanym, gdy oświetlamy drugie oko", "isCorrect": true},
+        {"option": "Zwężeniu źrenicy w oku, które jest bezpośrednio oświetlane", "isCorrect": false},
+        {"option": "Rozszerzeniu obu źrenic w odpowiedzi na światło", "isCorrect": false},
+        {"option": "Zwężeniu źrenic podczas patrzenia na bliski przedmiot", "isCorrect": false}
+      ]
+    },
+    "createdAt": "2025-11-01 14:30:15.456789",
+    "updatedAt": null
+  },
+  {
+    "id": "b0c1d2e3-f4a5-4b6c-d37e-4f5a6b7c8d9e",
+    "category": "fizjologia",
+    "data": {
+      "question": "Za unerwienie większości mięśni zewnętrznych gałki ocznej odpowiada nerw:",
+      "answers": [
+        {"option": "Okoruchowy (III)", "isCorrect": true},
+        {"option": "Bloczkowy (IV)", "isCorrect": false},
+        {"option": "Odwodzący (VI)", "isCorrect": false},
+        {"option": "Wzrokowy (II)", "isCorrect": false}
+      ]
+    },
+    "createdAt": "2025-11-01 14:30:16.567890",
+    "updatedAt": null
+  },
+  {
+    "id": "c1d2e3f4-a5b6-4c7d-e48f-5a6b7c8d9e0f",
+    "category": "fizjologia",
+    "data": {
+      "question": "Do oceny ostrości wzroku z daleka standardowo używa się:",
+      "answers": [
+        {"option": "Tablic Snellena", "isCorrect": true},
+        {"option": "Tablic Ishihary", "isCorrect": false},
+        {"option": "Oftalmoskopu", "isCorrect": false},
+        {"option": "Perymetru", "isCorrect": false}
+      ]
+    },
+    "createdAt": "2025-11-01 14:30:17.678901",
+    "updatedAt": null
+  },
+  {
+    "id": "d2e3f4a5-b6c7-4d8e-f59a-6b7c8d9e0f1a",
+    "category": "fizjologia",
+    "data": {
+      "question": "Nierówność źrenic to:",
+      "answers": [
+        {"option": "Anizokoria", "isCorrect": true},
+        {"option": "Izokoria", "isCorrect": false},
+        {"option": "Mioza", "isCorrect": false},
+        {"option": "Mydriaza", "isCorrect": false}
+      ]
+    },
+    "createdAt": "2025-11-01 14:30:18.789012",
+    "updatedAt": null
+  },
+  {
+    "id": "e3f4a5b6-c7d8-4e9f-a60b-7c8d9e0f1a2b",
+    "category": "fizjologia",
+    "data": {
+      "question": "W próbie Webera, w przypadku głuchoty przewodzeniowej ucha lewego, pacjent będzie słyszał drgania stroika:",
+      "answers": [
+        {"option": "Głośniej w chorym (lewym) uchu", "isCorrect": true},
+        {"option": "Głośniej w zdrowym (prawym) uchu", "isCorrect": false},
+        {"option": "Jednakowo w obu uszach", "isCorrect": false},
+        {"option": "Nie będzie słyszał drgań w ogóle", "isCorrect": false}
+      ]
+    },
+    "createdAt": "2025-11-01 14:30:19.890123",
+    "updatedAt": null
+  },
+  {
+    "id": "f4a5b6c7-d8e9-4f0a-b71c-8d9e0f1a2b3c",
+    "category": "fizjologia",
+    "data": {
+      "question": "Prawidłowy wynik próby Rinnego (Rinne dodatni) to sytuacja, w której:",
+      "answers": [
+        {"option": "Przewodnictwo powietrzne jest dłuższe niż kostne", "isCorrect": true},
+        {"option": "Przewodnictwo kostne jest dłuższe niż powietrzne", "isCorrect": false},
+        {"option": "Przewodnictwo kostne i powietrzne są równe", "isCorrect": false},
+        {"option": "Pacjent nie słyszy dźwięku ani przy kości, ani przy uchu", "isCorrect": false}
+      ]
+    },
+    "createdAt": "2025-11-01 14:30:21.012345",
+    "updatedAt": null
+  },
+  {
+    "id": "a5b6c7d8-e9f0-4a1b-c82d-9e0f1a2b3c4d",
+    "category": "fizjologia",
+    "data": {
+      "question": "Bolesność uciskowa okolicy zatok czołowych i szczękowych może wskazywać na:",
+      "answers": [
+        {"option": "Zapalenie zatok przynosowych", "isCorrect": true},
+        {"option": "Zapalenie ucha środkowego", "isCorrect": false},
+        {"option": "Neuralgię nerwu trójdzielnego", "isCorrect": false},
+        {"option": "Zapalenie ślinianki przyusznej", "isCorrect": false}
+      ]
+    },
+    "createdAt": "2025-11-01 14:30:22.123456",
+    "updatedAt": null
+  },
+  {
+    "id": "b6c7d8e9-f0a1-4b2c-d93e-0f1a2b3c4d5e",
+    "category": "fizjologia",
+    "data": {
+      "question": "Przewód Stensona to ujście:",
+      "answers": [
+        {"option": "Ślinianki przyusznej", "isCorrect": true},
+        {"option": "Ślinianki podżuchwowej", "isCorrect": false},
+        {"option": "Ślinianki podjęzykowej", "isCorrect": false},
+        {"option": "Gruczołu łzowego", "isCorrect": false}
+      ]
+    },
+    "createdAt": "2025-11-01 14:30:23.234567",
+    "updatedAt": null
+  },
+  {
+    "id": "c7d8e9f0-a1b2-4c3d-ea4f-1a2b3c4d5e6f",
+    "category": "fizjologia",
+    "data": {
+      "question": "Odruch gardłowy jest kontrolowany przez nerwy czaszkowe:",
+      "answers": [
+        {"option": "Językowo-gardłowy (IX) i błędny (X)", "isCorrect": true},
+        {"option": "Podjęzykowy (XII) i twarzowy (VII)", "isCorrect": false},
+        {"option": "Trójdzielny (V) i okoruchowy (III)", "isCorrect": false},
+        {"option": "Węchowy (I) i wzrokowy (II)", "isCorrect": false}
+      ]
+    },
+    "createdAt": "2025-11-01 14:30:24.345678",
+    "updatedAt": null
+  },
+  {
+    "id": "d8e9f0a1-b2c3-4d4e-fb5a-2b3c4d5e6f7a",
+    "category": "fizjologia",
+    "data": {
+      "question": "Język malinowy (wygładzony, zaczerwieniony) może być objawem:",
+      "answers": [
+        {"option": "Niedoboru witamin z grupy B lub żelaza", "isCorrect": true},
+        {"option": "Porażenia nerwu podjęzykowego", "isCorrect": false},
+        {"option": "Grzybicy jamy ustnej", "isCorrect": false},
+        {"option": "Prawidłowego stanu fizjologicznego", "isCorrect": false}
+      ]
+    },
+    "createdAt": "2025-11-01 14:30:25.456789",
+    "updatedAt": null
+  },
+  {
+    "id": "e9f0a1b2-c3d4-4e5f-ac6b-3c4d5e6f7a8b",
+    "category": "fizjologia",
+    "data": {
+      "question": "Tarczyca jest gruczołem wydzielania wewnętrznego, który produkuje głównie:",
+      "answers": [
+        {"option": "Tyroksynę (T4) i trijodotyroninę (T3)", "isCorrect": true},
+        {"option": "Insulinę i glukagon", "isCorrect": false},
+        {"option": "Kortyzol i aldosteron", "isCorrect": false},
+        {"option": "Adrenalinę i noradrenalinę", "isCorrect": false}
+      ]
+    },
+    "createdAt": "2025-11-01 14:30:26.567890",
+    "updatedAt": null
+  },
+  {
+    "id": "f0a1b2c3-d4e5-4f6a-bd7c-4d5e6f7a8b9c",
+    "category": "fizjologia",
+    "data": {
+      "question": "Podczas badania tarczycy prosi się pacjenta o przełknięcie wody, aby:",
+      "answers": [
+        {"option": "Ocenić ruchomość gruczołu i jego symetrię", "isCorrect": true},
+        {"option": "Sprawdzić odruch połykania", "isCorrect": false},
+        {"option": "Nawilżyć gardło przed dalszym badaniem", "isCorrect": false},
+        {"option": "Zrelaksować mięśnie szyi", "isCorrect": false}
+      ]
+    },
+    "createdAt": "2025-11-01 14:30:27.678901",
+    "updatedAt": null
+  },
+  {
+    "id": "a1b2c3d4-e5f6-4a7b-be8d-5e6f7a8b9c0d",
+    "category": "fizjologia",
+    "data": {
+      "question": "Szmer naczyniowy słyszalny nad tarczycą jest charakterystyczny dla:",
+      "answers": [
+        {"option": "Nadczynności tarczycy", "isCorrect": true},
+        {"option": "Niedoczynności tarczycy", "isCorrect": false},
+        {"option": "Prawidłowo funkcjonującej tarczycy", "isCorrect": false},
+        {"option": "Zapalenia gardła", "isCorrect": false}
+      ]
+    },
+    "createdAt": "2025-11-01 14:30:28.789012",
+    "updatedAt": null
+  },
+  {
+    "id": "b2c3d4e5-f6a7-4b8c-bf9e-6f7a8b9c0d1e",
+    "category": "fizjologia",
+    "data": {
+      "question": "Przesunięcie tchawicy na stronę zdrową może być spowodowane przez:",
+      "answers": [
+        {"option": "Gromadzenie się płynu w jamie opłucnej po stronie przeciwnej", "isCorrect": true},
+        {"option": "Powiększenie tarczycy", "isCorrect": false},
+        {"option": "Skurcz mięśni mostkowo-obojczykowo-sutkowych", "isCorrect": false},
+        {"option": "Złamanie obojczyka", "isCorrect": false}
+      ]
+    },
+    "createdAt": "2025-11-01 14:30:29.890123",
+    "updatedAt": null
+  },
+  {
+    "id": "c3d4e5f6-a7b8-4c9d-c0af-7a8b9c0d1e2f",
+    "category": "fizjologia",
+    "data": {
+      "question": "Opadanie powieki (ptoza) może być objawem uszkodzenia którego nerwu czaszkowego?",
+      "answers": [
+        {"option": "Nerwu okoruchowego (III)", "isCorrect": true},
+        {"option": "Nerwu wzrokowego (II)", "isCorrect": false},
+        {"option": "Nerwu twarzowego (VII)", "isCorrect": false},
+        {"option": "Nerwu trójdzielnego (V)", "isCorrect": false}
+      ]
+    },
+    "createdAt": "2025-11-01 14:30:31.012345",
+    "updatedAt": null
+  },
+  {
+    "id": "d4e5f6a7-b8c9-4d0e-d1ba-8b9c0d1e2f3a",
+    "category": "fizjologia",
+    "data": {
+      "question": "Białe płytki na błonie śluzowej jamy ustnej, które można zetrzeć, są typowe dla:",
+      "answers": [
+        {"option": "Grzybicy jamy ustnej", "isCorrect": true},
+        {"option": "Aft", "isCorrect": false},
+        {"option": "Leukoplakii", "isCorrect": false},
+        {"option": "Zapalenia wirusowego", "isCorrect": false}
+      ]
+    },
+    "createdAt": "2025-11-01 14:30:32.123456",
+    "updatedAt": null
+  },
+  {
+    "id": "e5f6a7b8-c9d0-4e1f-e2cb-9c0d1e2f3a4b",
+    "category": "fizjologia",
+    "data": {
+      "question": "Prawidłowy czas powrotu krążenia włośniczkowego, oceniany przez ucisk na płytkę paznokcia, wynosi:",
+      "answers": [
+        {"option": "Mniej niż 2 sekundy", "isCorrect": true},
+        {"option": "Od 3 do 5 sekund", "isCorrect": false},
+        {"option": "Od 5 do 10 sekund", "isCorrect": false},
+        {"option": "Powyżej 10 sekund", "isCorrect": false}
+      ]
+    },
+    "createdAt": "2025-11-01 14:30:33.234567",
+    "updatedAt": null
+  }
+]

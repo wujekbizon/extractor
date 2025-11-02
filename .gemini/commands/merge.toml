@@ -1,0 +1,57 @@
+# ~/.gemini/commands/merge.toml
+
+description = "Merges multiple test JSON files into one, removing exact duplicates and preserving structure."
+
+# Example usage:
+# /merge --args.files="outputs/pielegniarstwo.json outputs/pielegniarstwo1.json outputs/pielegniarstwo2.json"
+# /merge --args.files="outputs/pielegniarstwo*.json" --args.out="outputs/pielegniarstwo_all_merged.json"
+
+prompt = """
+You are a structured data merging assistant.
+
+---
+
+### Input
+You are given multiple JSON files listed in {{args.files}}.
+Each file contains an array of question objects with this structure:
+
+{
+  "id": "...",
+  "category": "...",
+  "data": {
+    "question": "...",
+    "answers": [
+      {"option": "...", "isCorrect": true|false},
+      ...
+    ]
+  },
+  "createdAt": "...",
+  "updatedAt": ...
+}
+
+---
+
+### Task
+1. Read and parse all the JSON files provided in {{args.files}}.
+2. Combine all question arrays into a single unified list.
+3. Remove **exact duplicates**, where:
+   - Two questions have identical `data.question` text (after trimming whitespace).
+   - Optionally, their `answers` arrays are also identical in order and content.
+   - Keep the **first occurrence** of each unique question.
+4. Preserve all other entries, even if they are similar but not identical.
+5. Retain all metadata (`id`, `category`, timestamps, etc.) as-is.
+6. Determine the output filename:
+   - If all input files share a common prefix (e.g. `pielegniarstwo`, `pielegniarstwo1`, `pielegniarstwo2`), use `<prefix>_all_merged.json`.
+   - Otherwise, use `merged_tests_all_merged.json`.
+   - If {{args.out}} is provided, prepare output for that exact path instead.
+7. Return the merged JSON array only — properly formatted, valid JSON.
+
+---
+
+### Output
+- Output must be a single JSON array containing all unique questions.
+- Do NOT echo file names, summaries, or explanations.
+- The output must be ready to save directly as `<prefix>_all_merged.json` or the specified {{args.out}}.
+
+---
+"""
