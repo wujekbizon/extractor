@@ -11,7 +11,7 @@ OUTPUT_DIR="outputs"
 LOG_DIR="logs"
 INSTRUCTION_FILE="agent_instructions/generate_task.md"
 MAX_AGENTS=3   # number of concurrent Gemini agents
-CATEGORY="fizjologia"  # adjust as needed
+CATEGORY="sieci"  # adjust as needed
 
 mkdir -p "$LOG_DIR" "$OUTPUT_DIR"
 

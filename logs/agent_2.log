@@ -1,6 +1,0 @@
-[Agent 2] Started Sat, Nov  1, 2025 12:30:08 PM
-[Agent 2] Running: /generate --args.file='@inputs/book2.pdf' --args.category='fizjologia' --args.out='outputs/book2.json'
-Loaded cached credentials.
-[Agent 2] ✅ Saved JSON to outputs/book2.json
-[Agent 2] ✅ Completed: inputs/book2.pdf
-[Agent 2] Finished Sat, Nov  1, 2025 12:31:36 PM

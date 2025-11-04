@@ -1,7 +1,0 @@
-[Agent 3] Started Sat, Nov  1, 2025 12:30:08 PM
-[Agent 3] Running: /generate --args.file='@inputs/file2.pdf' --args.category='fizjologia' --args.out='outputs/file2.json'
-Loaded cached credentials.
-Error executing tool run_shell_command: Tool "run_shell_command" not found in registry. Tools must use the exact names that are registered. Did you mean one of: "search_file_content", "read_file", "web_fetch"?
-[Agent 3] ✅ Saved JSON to outputs/file2.json
-[Agent 3] ✅ Completed: inputs/file2.pdf
-[Agent 3] Finished Sat, Nov  1, 2025 12:31:43 PM
