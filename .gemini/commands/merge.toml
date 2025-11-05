@@ -48,10 +48,10 @@ Each file contains an array of question objects with this structure:
 
 ---
 
-### Output
-- Output must be a single JSON array containing all unique questions.
-- Do NOT echo file names, summaries, or explanations.
-- The output must be ready to save directly as `<prefix>_all_merged.json` or the specified {{args.out}}.
-
+### Important
+- Do NOT regenerate or invent new questions.
+- Do NOT modify question text except to fix obvious typos.
+- Do NOT use any file or code tools (e.g., write_file, run_code).
+- Return **only the validated JSON array to stdout** — nothing else.
 ---
 """

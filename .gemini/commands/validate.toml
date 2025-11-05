@@ -67,5 +67,6 @@ If {{args.out}} is provided, prepare the JSON for that file path instead.
 ### Important
 - Do NOT regenerate or invent new questions.
 - Do NOT modify question text except to fix obvious typos.
-- Do NOT output explanations — return **only valid JSON**.
+- Do NOT use any file or code tools (e.g., write_file, run_code).
+- Return only the validated JSON array to stdout.
 """
