@@ -24,11 +24,16 @@ Produce **only** a JSON array following this structure:
 [
   {
     "id": "<uuid v4>",
-    "category": "{{args.category}}",
+     "meta": {
+            "course": "pielegniarstwo",
+            "category": "{{args.category}}"
+        },
     "data": {
       "question": "<question text>",
       "answers": [
         {"option": "<choice text>", "isCorrect": true|false},
+        {"option": "<choice text>", "isCorrect": true|false}
+        {"option": "<choice text>", "isCorrect": true|false}
         {"option": "<choice text>", "isCorrect": true|false}
       ]
     },

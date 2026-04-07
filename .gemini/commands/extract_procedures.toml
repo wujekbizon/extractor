@@ -1,0 +1,133 @@
+# ~/.gemini/commands/extract_procedures.toml
+
+description = "Extracts medical procedures (check-lists) AND review questions (Pytania Sprawdzające) from nursing/medical PDF files into two structured JSON outputs: one for procedures and one for a Q&A test."
+
+# Named arguments (dynamic)
+# Example usage:
+# /extract_procedures --args.file="inputs/checklist.pdf"
+# /extract_procedures --args.file="@inputs/checklist.pdf" --args.category="kontrola_zakażeń" --args.out_procedures="outputs/procedures.json" --args.out_tests="outputs/tests.json"
+
+prompt = """
+You are a medical education data extraction assistant. Your task is to process nursing/medical check-list PDFs and extract TWO distinct datasets from the same source file(s):
+
+1. **Medical Procedures** — structured check-list procedures with scoring
+2. **Review Test Questions** — "Pytania Sprawdzające" Q&A with correct answers from the answer key
+
+### Input
+- File path(s): {{args.file}}
+- Category (optional): {{args.category}}
+- Output path for procedures JSON (optional): {{args.out_procedures}}
+- Output path for tests JSON (optional): {{args.out_tests}}
+
+---
+
+## PART 1 — EXTRACT MEDICAL PROCEDURES
+
+Read each procedure/check-list section. For every named procedure, extract:
+- Its full name
+- All steps grouped by section (CZYNNOŚCI PRZYGOTOWAWCZE, CZYNNOŚCI WŁAŚCIWE, CZYNNOŚCI KOŃCOWE)
+- Each step's point value (always 1–0 unless otherwise stated)
+- Total possible points (SUMA PUNKTÓW)
+- Passing threshold points (Poziom zaliczenia = 70% of max)
+- Any notes/warnings (Uwaga! or footnotes marked with *)
+
+Produce a JSON array of procedure objects following this exact structure:
+
+[
+  {
+    "id": "<uuid v4>",
+    "meta": {
+      "course": "pielegniarstwo",
+      "category": "{{args.category}}"
+    },
+    "name": "<Full procedure name as written in the document>",
+    "executionTime": "<time string from header, e.g. '1,5 min' or '20–30 min'>",
+    "totalPoints": <integer — maximum possible points>,
+    "passingPoints": <integer — minimum points to pass (70% threshold)>,
+    "sections": [
+      {
+        "title": "<section name, e.g. 'CZYNNOŚCI PRZYGOTOWAWCZE'>",
+        "steps": [
+          {
+            "number": <original step number from document>,
+            "step": "<exact step description>",
+            "points": 1
+          }
+        ]
+      }
+    ],
+    "notes": "<any Uwaga! or footnote text, or null if none>",
+    "createdAt": "<YYYY-MM-DD HH:MM:SS.micro>",
+    "updatedAt": null
+  }
+]
+
+---
+
+## PART 2 — EXTRACT REVIEW QUESTIONS (PYTANIA SPRAWDZAJĄCE)
+
+Find all "PYTANIA SPRAWDZAJĄCE" sections and the "KLUCZ ODPOWIEDZI" (answer key) at the end.
+Cross-reference each question's options with the answer key to set isCorrect correctly.
+
+Produce a JSON array of question objects following this exact structure:
+
+[
+  {
+    "id": "<uuid v4>",
+    "meta": {
+      "course": "pielegniarstwo",
+      "category": "{{args.category}}"
+    },
+    "data": {
+      "question": "<exact question text>",
+      "answers": [
+        {"option": "<option a text>", "isCorrect": true|false},
+        {"option": "<option b text>", "isCorrect": true|false},
+        {"option": "<option c text>", "isCorrect": true|false},
+        {"option": "<option d text>", "isCorrect": true|false}
+      ]
+    },
+    "createdAt": "<YYYY-MM-DD HH:MM:SS.micro>",
+    "updatedAt": null
+  }
+]
+
+---
+
+## OUTPUT FORMAT
+
+Return **two separate JSON arrays** clearly delimited as follows — the consumer will split and save them to separate files:
+
+```procedures.json
+[ ...procedure objects... ]
+```
+
+```tests.json
+[ ...question objects... ]
+```
+
+If {{args.out_procedures}} is specified, the procedures array is intended for that path.
+If {{args.out_tests}} is specified, the tests array is intended for that path.
+Use the file tool (or write tool) to save each array to its respective output path when provided.
+
+---
+
+## Rules
+1. Preserve exact wording of all steps and questions — do not paraphrase.
+2. Use the KLUCZ ODPOWIEDZI to mark correct answers (isCorrect: true). If no key is found, mark all as false and append "NOTE: brak klucza odpowiedzi" to the question text.
+3. Normalize diacritics, spacing, and punctuation where clearly corrupted by OCR.
+4. Each step point value defaults to 1 unless the document explicitly states otherwise.
+5. totalPoints = sum of all individual step points for that procedure.
+6. passingPoints = as stated in the document (Poziom zaliczenia line).
+7. If multiple files are provided, combine all procedures and all questions into their respective arrays.
+8. Generate valid UUID v4 for every id field.
+9. createdAt = current timestamp at time of extraction.
+10. **Save two separate files**: the procedures array to {{args.out_procedures}} (default: `procedures.json`) and the tests array to {{args.out_tests}} (default: `tests.json`). Each file must contain only its respective JSON array — no wrapper object.
+
+### Behavior
+- Use available tools such as `read`, `search`, and `write` to inspect content at {{args.file}} and save outputs.
+- Process PART 1 (procedures) first, extract and write procedures.json, then process PART 2 (questions) and write tests.json.
+- After writing both files, confirm with a brief summary: how many procedures and how many questions were extracted.
+
+Do **not** print the full JSON in the response — write it directly to the output files.
+"""

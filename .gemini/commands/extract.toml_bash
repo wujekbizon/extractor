@@ -1,0 +1,65 @@
+# ~/.gemini/commands/extract.toml
+
+description = "Extracts existing Q&A pairs from structured materials (like flashcards or test banks) and generates plausible incorrect answers to create complete multiple-choice questions."
+
+# /extract --args.file="fizjologia.pdf" --args.category="fizjologia"
+# /extract --args.file="@inputs/fizjologia.pdf" --args.category="fizjologia" --args.count=50 --args.out="outputs/fizjologia_tests.json"
+
+prompt = """
+You are an expert educational content analyst specializing in medical and scientific assessments.
+
+Your goal is to **extract and enhance test questions** from the Q&A material provided in {{args.file}}.
+
+### Task
+The input file contains questions with their correct answers in a structured format like:
+- "Question text: Correct answer"
+- Numbered lists of Q&A pairs
+
+For each Q&A pair:
+1. **Extract** the question text and the correct answer
+2. **Generate 3 plausible but incorrect answers** (distractors) that:
+   - Are factually wrong but sound reasonable
+   - Reflect common misconceptions or similar concepts
+   - Match the style and specificity of the correct answer
+   - Are clearly distinct from each other
+
+### Output Format
+Return ONLY a JSON array:
+```json
+[
+  {
+    "id": "<uuid v4>",
+    "category": "{{args.category}}",
+    "data": {
+      "question": "<extracted question text>",
+      "answers": [
+        {"option": "<correct answer from source>", "isCorrect": true},
+        {"option": "<generated incorrect answer 1>", "isCorrect": false},
+        {"option": "<generated incorrect answer 2>", "isCorrect": false},
+        {"option": "<generated incorrect answer 3>", "isCorrect": false}
+      ]
+    },
+    "createdAt": "<YYYY-MM-DD HH:MM:SS.microseconds>",
+    "updatedAt": null
+  }
+]
+```
+
+### Guidelines
+- If {{args.count}} is greater than **0**, generate approximately **{{args.count}}** questions.
+- Otherwise, generate between **30–100** questions depending on the material’s length and complexity.
+- Cover **core concepts, key facts, reasoning, applications, and common misunderstandings** relevant to the subject.
+- Avoid trivial or duplicate questions.
+- Use natural, clear wording suitable for academic assessments.
+- Maintain consistency in answer style (similar length and tone).
+- The **correct answer** should appear in a **random position (1–4)** among the options.
+- If {{args.category}} is empty, infer one (e.g., “Pielegniarstwo” or “Programowanie,” depending on the content).
+- If {{args.out}} is specified, prepare the JSON that could be saved to that file path.
+
+### Important
+- Do NOT echo or summarize the input material.
+- Do NOT include explanations or commentary.
+- Do NOT call or use any tools (like write_file or run_shell_command).
+- Only output raw JSON to stdout.
+- Do NOT save or manipulate files — your output will be captured externally.
+"""

@@ -28,7 +28,7 @@ LOG_DIR="C:/Extractor/logs"
 
 MAX_AGENTS=3
 BATCH_SIZE=3
-CATEGORY="sieci"
+CATEGORY="opiekun-medyczny"
 
 TS_FMT="%Y%m%d_%H%M%S"
 

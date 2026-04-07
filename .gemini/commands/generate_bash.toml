@@ -12,23 +12,25 @@ You are an expert educational content analyst and assessment designer.
 
 Your goal is to **create test questions based EXCLUSIVELY on the content extracted from {{args.file}}**.
 
-### STEP 1: READ THE INPUT FILE
-First, you MUST read the entire content of the file: {{args.file}}
-Use the appropriate file reading method to access the PDF content.
-
 ### CRITICAL RULES
 1. **PDF IS THE SINGLE SOURCE OF TRUTH** — Do NOT use your general knowledge for questions or correct answers. ALL questions and correct answers MUST come directly from the PDF content.
-2. **EXTRACT, DON'T GENERATE** — Base questions and correct answers on actual statements, facts, and information present in the PDF, not on what you think should be there.
-3. **FALSE ANSWERS CAN USE GENERAL KNOWLEDGE** — While questions and correct answers must come from the PDF, the 3 incorrect answers can be generated using your general knowledge, BUT they must:
+2. **BOLD TEXT IS PRIMARY** — Pay special attention to bold text in the document, as it typically indicates:
+   - Key definitions
+   - Important terms
+   - Critical concepts
+   - Main principles
+3. **EXTRACT, DON'T GENERATE** — Base questions and correct answers on actual statements, facts, and information present in the PDF, not on what you think should be there.
+4. **FALSE ANSWERS CAN USE GENERAL KNOWLEDGE** — While questions and correct answers must come from the PDF, the 3 incorrect answers can be generated using your general knowledge, BUT they must:
    - Be topically relevant to the question
    - Be plausible distractors (sound reasonable but are incorrect)
    - Match the context and difficulty level of the material
    - Not be obviously wrong or absurd
-54. **VERIFY BEFORE INCLUDING** — If you cannot find explicit information in the PDF for a question or correct answer, do NOT create that question.
+5. **VERIFY BEFORE INCLUDING** — If you cannot find explicit information in the PDF for a question or correct answer, do NOT create that question.
 
-### STEP 2: ANALYZE THE CONTENT
+### Task
 1. **Read the ENTIRE content** of {{args.file}} carefully.
 2. **Identify and prioritize**:
+   - ALL bold text (these are your primary sources for questions)
    - Definitions explicitly stated in the text
    - Facts, principles, and concepts clearly explained
    - Examples and their explanations
@@ -43,40 +45,32 @@ Use the appropriate file reading method to access the PDF content.
      * Can be based on your general knowledge of the topic
 4. **Quote or paraphrase directly** from the PDF content when formulating questions and correct answers.
 
-### STEP 3: GENERATE OUTPUT
-Create a JSON array formatted as follows:
-
+### Output Format
+Return ONLY a JSON array formatted as follows:
 
 [
   {
     "id": "<uuid v4>",
-    "meta": {
-      "course": "pielegniarstwo",
-      "category": "{{args.category}}"
-    },
+    "category": "{{args.category}}",
     "data": {
-      "question": "<exact question text>",
+      "question": "<question based on PDF content>",
       "answers": [
-        {"option": "<option a text>", "isCorrect": true|false},
-        {"option": "<option b text>", "isCorrect": true|false},
-        {"option": "<option c text>", "isCorrect": true|false},
-        {"option": "<option d text>", "isCorrect": true|false}
+        {"option": "<correct answer from PDF>", "isCorrect": true},
+        {"option": "<plausible incorrect answer>", "isCorrect": false},
+        {"option": "<plausible incorrect answer>", "isCorrect": false},
+        {"option": "<plausible incorrect answer>", "isCorrect": false}
       ]
     },
     "createdAt": "<YYYY-MM-DD HH:MM:SS.micro>",
     "updatedAt": null
-  }
+  },
+  ...
 ]
-
-### STEP 4: SAVE THE OUTPUT
-If {{args.out}} file is provided 
-Write the generated JSON array to the file: {{args.out}}
-Ensure the directory exists before writing.
-
 
 ### Guidelines
 - If {{args.count}} is greater than **0**, generate approximately **{{args.count}}** questions.
-- Otherwise, generate between **100** questions depending on the PDF's content volume.
+- Otherwise, generate between **30–100** questions depending on the PDF's content volume.
+- **Prioritize bold text** — generate at least one question for each major bold term/concept.
 - Cover headings, subheadings, and structured content (lists, tables, diagrams descriptions).
 - **Stay faithful to the PDF** for questions and correct answers — do not introduce external information or assumptions.
 - **Create intelligent distractors** for incorrect answers that test understanding, not just memory.
@@ -89,19 +83,19 @@ Ensure the directory exists before writing.
 ### Validation Checklist (Internal)
 Before including any question, verify:
 - [ ] Can I find this information explicitly in the PDF?
+- [ ] Is this question based on bold text or clearly emphasized content?
 - [ ] Is the CORRECT answer derived from actual PDF content, not my general knowledge?
 - [ ] Does the correct answer match what the PDF actually says?
 - [ ] Are the incorrect answers plausible and topically relevant?
 - [ ] Would the incorrect answers effectively test understanding of the concept?
 
-### Execution Summary
-After completion, report:
-- Number of questions generated
-- Output location {{args.out}}
-- Any warnings or issues encountered
-
 ### Important
 - Do NOT use external knowledge for questions or correct answers.
 - You MAY use external knowledge for creating plausible incorrect answers.
 - Do NOT create questions about topics merely related to the PDF subject.
+- Do NOT echo or summarize the input material.
+- Do NOT include explanations or commentary.
+- Do NOT call or use any tools (like write_file or run_shell_command).
+- Only output raw JSON to stdout.
+- Do NOT save or manipulate files — your output will be captured externally.
 """

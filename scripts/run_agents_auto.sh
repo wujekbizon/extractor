@@ -25,10 +25,11 @@ OUTPUT_DIR="C:/Extractor/outputs"
 DONE_DIR="C:/Extractor/done"
 FAILED_DIR="C:/Extractor/failed"
 LOG_DIR="C:/Extractor/logs"
+INSTRUCTION_FILE="C:\Extractor\agent_instructions\generate_task.md"
 
-MAX_AGENTS=3
-BATCH_SIZE=3
-CATEGORY="sieci"
+MAX_AGENTS=1
+BATCH_SIZE=1
+CATEGORY="opiekun-medyczny"
 
 # Rate-limit detection patterns (grep -Ei)
 RATE_LIMIT_PATTERN="429|Resource exhausted|rate.*limit|rateLimitExceeded"
@@ -190,11 +191,13 @@ run_agent() {
   local cmd="/generate --args.file='@${file}' --args.category='${CATEGORY}' --args.out='${output_file}'"
   echo "[Agent ${agent_seq}] Running: $cmd" | tee -a "$log_file"
 
-  # Run gemini - using echo|gemini pattern like original
-  # Capture stdout/stderr to the log; also capture CLI output to variable
-  # Run gemini in subshell to capture combined output
+  # Inject agent instructions + command
+  local full_prompt
+  full_prompt="$(cat "$INSTRUCTION_FILE")"$'\n\n'"$cmd"
+
+  # Run gemini
   local result
-  result=$(echo "$cmd" | gemini 2>&1)
+  result=$(echo "$full_prompt" | gemini 2>&1)
   echo "$result" >> "$log_file"
 
   # Attempt to extract JSON-like block if tool printed it in logs (heuristic)
