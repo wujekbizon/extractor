@@ -149,3 +149,38 @@ Or check the manifest: `extractor/data/<filename>_manifest.json`
 **Dashboard**: Wolfmed tab shows pipeline state in real time — Books section for PDFs, Lecture Slides section for TXT files. Progress bar and per-chunk/per-file status visible on click.
 
 **Merge is safe to re-run**: UUID registry in `extractor/data/wolfmed.db` prevents duplicate questions across runs.
+
+### Retry Failed Tasks
+
+If tasks fail, use `retry_failed_tasks.py` from the `scripts/` directory. The
+utility changes only tasks whose status is `failed` back to `pending`, so the
+daemon can pick them up again. It preserves the previous error in the task's
+`retry_history`.
+
+Preview failed validation tasks without changing anything:
+
+```powershell
+python retry_failed_tasks.py --type validate_questions --dry-run
+```
+
+Retry only failed question-validation tasks:
+
+```powershell
+python retry_failed_tasks.py --type validate_questions
+```
+
+The `--type validate_questions` filter is important when you do not want to
+retry unrelated failed frontend, code, assets, or design tasks.
+
+After re-queuing the validation tasks, resume the Wolfmed pipeline:
+
+```powershell
+python wolfmed_intake.py --category pielegniarstwo-pediatryczne --watch
+```
+
+For all failed task types, omit the type filter:
+
+```powershell
+python retry_failed_tasks.py --dry-run
+python retry_failed_tasks.py
+```
